@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VolunteerApp</string>
+    <string name="Sign_in">Войти</string>
+    <string name="Sign_up">Зарегистрироваться</string>
+</resources>
