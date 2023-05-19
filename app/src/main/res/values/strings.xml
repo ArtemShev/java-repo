@@ -1,5 +1,17 @@
 <resources>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">LRd80RT9LVFPxeILkul3kEXaofbmBxxsnLoWwkE3</string>
+    <string name="back4app_client_key">7LXh7y8w515PCA0GajqtQnsiVub19WGRbbPGbMVG</string>
+
     <string name="app_name">VolunteerApp</string>
     <string name="Sign_in">Войти</string>
     <string name="Sign_up">Зарегистрироваться</string>
+    <string name="lastname">Фамилия</string>
+    <string name="firstname">Имя</string>
+    <string name="patronymic">Отчество</string>
+    <string name="date_of_birthday">Дата роджения</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+
 </resources>
