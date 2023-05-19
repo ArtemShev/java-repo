@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:layout_marginTop="12dp"
             android:hint="@string/firstname"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
@@ -38,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:layout_marginTop="12dp"
             android:hint="@string/patronymic"
             android:inputType="textPersonName" />
 
@@ -46,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:layout_marginTop="12dp"
             android:hint="@string/date_of_birthday"
             android:inputType="date"
             android:minHeight="48dp"
@@ -56,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:layout_marginTop="12dp"
             android:hint="@string/phone_number"
             android:inputType="phone"
             android:minHeight="48dp"
@@ -67,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:layout_marginTop="12dp"
             android:hint="@string/login"
             android:inputType="textEmailAddress"
             android:minHeight="48dp" />
@@ -76,9 +82,19 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:layout_marginTop="12dp"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/teal_200"
+            android:text="@string/Sign_up" />
 
     </LinearLayout>
 

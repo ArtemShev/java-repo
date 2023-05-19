@@ -49,36 +49,48 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/constraintLayout"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/signUpButton"
-            android:layout_width="220dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="@color/teal_200"
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/login" />
 
-            android:text="@string/Sign_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_marginTop="25dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/password" />
 
         <Button
             android:id="@+id/signInButton"
+            android:layout_marginTop="25dp"
             android:layout_width="220dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/teal_200"
+            android:text="@string/Sign_in"/>
 
-            android:text="@string/Sign_in"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/signUpButton"
+            android:layout_marginTop="25dp"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/teal_200"
+            android:text="@string/Sign_up" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>
