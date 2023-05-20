@@ -27,9 +27,5 @@ public class MainActivity extends AppCompatActivity {
 //                finish();
             }
         });
-//        ParseObject firstObject = new  ParseObject("FirstClass");
-//        firstObject.put("message","pasha");
-//        firstObject.put("name","pavel");
-
     }
 }

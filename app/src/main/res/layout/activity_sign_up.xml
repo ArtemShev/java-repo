@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <EditText
             android:id="@+id/lastnameField"
             android:layout_width="match_parent"
@@ -88,13 +89,13 @@
             android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/enterSignUpButton"
             android:layout_marginTop="25dp"
             android:layout_width="wrap_content"
             android:layout_height="55dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/teal_200"
-            android:text="@string/Sign_up" />
+            android:text="@string/sign_up" />
 
     </LinearLayout>
 
