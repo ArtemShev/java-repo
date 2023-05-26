@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="items_for_filter_of_events_for_volunteer">
+        <item>Мои мероприятия</item>
+        <item>Все мероприятия</item>
+        <item>Прошедшие мероприятия</item>
+    </string-array>
+</resources>

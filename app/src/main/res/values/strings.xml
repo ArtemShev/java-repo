@@ -16,4 +16,6 @@
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
 
+    <string name="filter_of_events">Фильтр мероприятий</string>
+
 </resources>
