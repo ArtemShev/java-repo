@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(view -> signIn());
     }
 
-    private void signIn() {
+    private void signIn() { 
         if(!login.getText().toString().equals("") || !password.getText().toString().equals("")){
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Загрузка");

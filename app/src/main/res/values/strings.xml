@@ -17,5 +17,8 @@
     <string name="password">Пароль</string>
 
     <string name="filter_of_events">Фильтр мероприятий</string>
+    <string name="fio">name of useer\n</string>
+    <string name="rate">rate\n</string>
+
 
 </resources>
