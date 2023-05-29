@@ -13,8 +13,11 @@ import android.widget.TextView;
 
 import com.example.volunteerapp.model.Event;
 import com.example.volunteerapp.model.User;
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseRelation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +27,12 @@ public class EventTreatmentActivity extends AppCompatActivity {
 
     private ListView listview;
     private List<ParseObject> listParse;
-private AdapterForEventTreatment adapter;
+    public User user = new User();
+
+   public Event event = new Event();
+
+    public ArrayList<User> list = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,20 +41,41 @@ private AdapterForEventTreatment adapter;
         setContentView(R.layout.activity_event_treatment);
 
         TextView textView = findViewById(R.id.textView2);
+        listview = findViewById(R.id.ListViewTreatment);
 
-        Event event = new Event();
-        event.setEventName("lalalal");
+
+//        event.setEventName("lalalal");
         ArrayList<Event> listEvent = new ArrayList<>();
         listEvent.add(event);
-        textView.setText(event.getEventName());
 
 
-        ParseQuery<ParseObject> query = new ParseQuery<>("FirstClass");
-        query.addAscendingOrder("EventName");
-        query.findInBackground((objects, e) -> {
+
+        ParseQuery<ParseObject> queryEvent = new ParseQuery<>("Event");
+//        queryEvent.addAscendingOrder("title");
+        queryEvent.findInBackground((objects, e) -> {
             if (e == null) {
-                Log.d(TAG, "Objects: " + objects.get(1).getString("EventName"));
-                listParse = objects;
+                Log.d(TAG, "Objects: " + objects.get(1).getString("title"));
+                event.setEventName(objects.get(1).getString("title"));
+                textView.setText(event.getEventName());
+
+
+
+                ParseRelation<ParseObject> relation = objects.get(0).getRelation("applications");
+                        ParseQuery<ParseObject> queryA = relation.getQuery();
+        queryA.findInBackground((objectsE, ex) -> {
+            if (e == null) {
+
+                if(objectsE != null){
+//                    Log.d(TAG, "Objects: " + objectsE.get(0).getString("lastname"));
+//                    Log.d(TAG, "Objects: " + objectsE.get(0).getString("firstname"));
+//                    Log.d(TAG, "Objects: " + objectsE.get(0).getString("patronymic"));
+
+
+                    AdapterForEventTreatment adapter = new AdapterForEventTreatment(this, objectsE);
+                    listview.setAdapter(adapter);
+                }
+            }
+        });
             } else {
                 Log.e(TAG, "Parse Error: ", e);
             }
@@ -54,22 +83,42 @@ private AdapterForEventTreatment adapter;
         });
 
 //        User user = new User();
-//        user.setLastname();
-////        user.setFirstname("Павел");
-////        user.setPatronymic("Алексеевич");
+
+//        ParseQuery<ParseObject> queryUser = new ParseQuery<>("_User");
+//        ParseQuery<ParseObject> query_event = new ParseQuery<ParseObject>("Event");
+//        query_event.getInBackground("fHPefVDwMX", new GetCallback<ParseObject>() {
+//            @Override
+//            public void done(ParseObject object, ParseException ex) {
+//
+//
+////                AdapterForEventTreatment adapter = new AdapterForEventTreatment(getBaseContext(), object.g);
+////                listview.setAdapter(adapter);
+//
+//            }
+//        });
 
 
-        ArrayList<User> list = new ArrayList<>();
-//        list.add(user);
 
-
-
-
-        listview = findViewById(R.id.ListViewTreatment);
-        adapter = new AdapterForEventTreatment(this, listParse);
+//        queryUser.findInBackground((objects, e) -> {
+//            if (e == null) {
+//                Log.d(TAG, "Objects: " + objects.get(1).getString("lastname"));
+//                Log.d(TAG, "Objects: " + objects.get(1).getString("firstname"));
+//                Log.d(TAG, "Objects: " + objects.get(1).getString("patronymic"));
+//
+//
+//                AdapterForEventTreatment adapter = new AdapterForEventTreatment(this, objects);
+//                listview.setAdapter(adapter);
+////
+//
+////
+//            } else {
+//                Log.e(TAG, "Parse Error: ", e);
+//            }
+//
+//        });
         listview.setItemsCanFocus(false);
-        listview.setAdapter(adapter);
-
     }
-
 }
+////                user.setLastname(objects.get(1).getString("lastname"));
+////                user.setFirstname(objects.get(1).getString("firstname"));
+////                user.setPatronymic(objects.get(1).getString("patronymic"));
