@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         toEventButton = findViewById(R.id.toEventButton);
 
         toEventButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, EventsActivity.class);
+            Intent intent = new Intent(MainActivity.this, VolunteerEventsActivity.class);
             startActivity(intent);
         });
     }

@@ -1,4 +1,4 @@
-package com.example.volunteerapp;
+package com.example.volunteerapp.adapters;
 
 import static android.content.ContentValues.TAG;
 
@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.volunteerapp.R;
 import com.example.volunteerapp.model.User;
 import com.parse.GetCallback;
 import com.parse.Parse;

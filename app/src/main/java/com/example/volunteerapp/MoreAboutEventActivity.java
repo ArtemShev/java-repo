@@ -28,7 +28,7 @@ public class MoreAboutEventActivity extends AppCompatActivity {
 
     TextView title, venue, organizer, date, quantity;
     ProgressBar progress;
-    Button applyButton;
+    Button applyButton, applicationButton, reportButton;
     ParseObject event;
     ProgressDialog progressDialog;
     User user;
@@ -51,6 +51,9 @@ public class MoreAboutEventActivity extends AppCompatActivity {
         quantity = findViewById(R.id.textViewQuantityOfEvent);
         progress = findViewById(R.id.progressBar);
         applyButton = findViewById(R.id.buttonApply);
+        applicationButton = findViewById(R.id.buttonApplication);
+        reportButton = findViewById(R.id.buttonReport);
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -65,6 +68,13 @@ public class MoreAboutEventActivity extends AppCompatActivity {
             progress.setProgress(event.getInt("quantity_current"));
             String quantityText = event.getInt("quantity_current") + "/" + event.getInt("quantity_max");
             quantity.setText(quantityText);
+
+            if(user.getPost().equals("student")){
+                applicationButton.setVisibility(View.GONE);
+                reportButton.setVisibility(View.GONE);
+            } else if (user.getPost().equals("employee")) {
+                applyButton.setVisibility(View.GONE);
+            }
 
             if(event.getDate("date").before(new Date())){
                 applyButton.setVisibility(View.GONE);

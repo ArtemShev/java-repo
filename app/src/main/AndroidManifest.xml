@@ -19,7 +19,13 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".EventsActivity"
+            android:name=".EventTreatmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MoreAboutEventActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerEventsActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"

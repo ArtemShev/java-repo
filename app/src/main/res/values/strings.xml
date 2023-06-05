@@ -21,4 +21,13 @@
     <string name="rate">rate\n</string>
 
 
+    <string name="venue">Место проведения</string>
+
+    <string name="organizer">Организатор</string>
+
+    <string name="datetime">Дата и время</string>
+
+    <string name="quantity">Количество участников</string>
+
+
 </resources>
