@@ -25,7 +25,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signin);
         UserPreferences ePref = new UserPreferences(this);
         if(ePref.getEntered()) {
-            Intent intent = new Intent(SignInActivity.this, EventsActivity.class);
+            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(view -> signIn());
     }
 
-    private void signIn() {
+    private void signIn() { 
         if(!login.getText().toString().equals("") || !password.getText().toString().equals("")){
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Загрузка");
@@ -61,7 +61,7 @@ public class SignInActivity extends AppCompatActivity {
                     UserPreferences uPref = new UserPreferences(this);
                     uPref.setEntered(true);
                     uPref.setUser(user);
-                    Intent intent = new Intent(SignInActivity.this, EventsActivity.class);
+                    Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
