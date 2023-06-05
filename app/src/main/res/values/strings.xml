@@ -16,9 +16,9 @@
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
 
-    <string name="filter_of_events">Фильтр</string>
-    <string name="venue">Место проведения</string>
-    <string name="organizer">Организатор</string>
-    <string name="datetime">Дата и время</string>
-    <string name="quantity">Количество участников</string>
+    <string name="filter_of_events">Фильтр мероприятий</string>
+    <string name="fio">name of useer\n</string>
+    <string name="rate">rate\n</string>
+
+
 </resources>
