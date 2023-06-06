@@ -54,10 +54,15 @@ public class SignInActivity extends AppCompatActivity {
                 if (parseUser != null) {
                     User user = new User();
                     user.setLogin(parseUser.getUsername());
+                    user.setId(parseUser.getObjectId());
                     user.setLastname(parseUser.getString("lastname"));
                     user.setFirstname(parseUser.getString("firstname"));
                     user.setPatronymic(parseUser.getString("patronymic"));
                     user.setPhone(parseUser.getString("phone"));
+                    user.setPost(parseUser.getString("post"));
+                    user.setPoints(Integer.toString(parseUser.getInt("points")));
+                    user.setDivision(parseUser.getString("division"));
+                    user.setAge(parseUser.getString("date_of_birthday"));
                     UserPreferences uPref = new UserPreferences(this);
                     uPref.setEntered(true);
                     uPref.setUser(user);

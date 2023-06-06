@@ -1,6 +1,7 @@
 package com.example.volunteerapp.model;
 
 public class User {
+    String id;
     String lastname;
     String firstname;
     String patronymic;
@@ -11,6 +12,14 @@ public class User {
     String division;
     String points;
     String age;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getAge() {
         return age;

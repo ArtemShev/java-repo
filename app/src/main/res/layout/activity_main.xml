@@ -57,4 +57,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rateView"
         app:srcCompat="@drawable/example_img" />
+
+    <ImageButton
+        android:id="@+id/imageButtonExit"
+        android:layout_width="50dp"
+        android:layout_height="47dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/cancel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
