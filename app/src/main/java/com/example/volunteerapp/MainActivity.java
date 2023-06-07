@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-//        queryUser.getInBackground(user.getId(), (object, ex) -> n = object.getInt("points"));
-//        System.out.println(user.getId());
+
         String nameString ="Здравствуй, "+ user.getLastname()+" "+user.getFirstname()+" "+user.getPatronymic();
         TextView fullnameView = findViewById(R.id.fullnameView);
         fullnameView.setText(nameString);
@@ -76,10 +75,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
-//         0 до 200 – Медный
-//        201 до 400 – Бронзовый
-//        401-600 – Серебряный
-//        601-800 – Золотой
-//        801 – 1000 – Бриллиантовый

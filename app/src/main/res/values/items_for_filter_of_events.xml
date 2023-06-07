@@ -6,7 +6,6 @@
         <item>Посещённые мероприятия</item>
     </string-array>
     <string-array name="items_for_filter_of_events_for_employee">
-        <item>Все мероприятия</item>
         <item>Рассмотреть заявки</item>
         <item>Сделать отчет</item>
     </string-array>

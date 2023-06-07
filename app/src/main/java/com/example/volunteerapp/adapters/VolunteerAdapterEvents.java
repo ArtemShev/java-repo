@@ -33,7 +33,6 @@ public class VolunteerAdapterEvents extends BaseAdapter {
         lInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
     @Override
     public int getCount() {
         return list.size();
@@ -70,19 +69,6 @@ public class VolunteerAdapterEvents extends BaseAdapter {
         title.setText(getItem(i).getString("title"));
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         date.setText(format.format(getItem(i).getDate("date")));
-
-
-//        ParseRelation<ParseObject> relation = getItem(i).getRelation("volunteers");
-//        ParseQuery<ParseObject> query = relation.getQuery();
-//        query.findInBackground((objects, e) -> {
-//            if (e == null) {
-//                if(objects != null){
-//
-//                }
-//            }
-//        });
-
-
 
         return v;
     }

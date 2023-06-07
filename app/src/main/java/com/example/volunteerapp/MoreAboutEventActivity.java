@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -78,6 +79,9 @@ public class MoreAboutEventActivity extends AppCompatActivity {
 
             if(event.getDate("date").before(new Date())){
                 applyButton.setVisibility(View.GONE);
+                applicationButton.setVisibility(View.GONE);
+            }else{
+                reportButton.setVisibility(View.GONE);
             }
         }
 
@@ -132,7 +136,11 @@ public class MoreAboutEventActivity extends AppCompatActivity {
                 }
             });
         });
-
+        applicationButton.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), EventTreatmentActivity.class);
+            intent.putExtra("event", event);
+            view.getContext().startActivity(intent);
+        });
 
     }
 }

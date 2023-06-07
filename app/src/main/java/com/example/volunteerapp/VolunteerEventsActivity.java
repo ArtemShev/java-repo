@@ -47,9 +47,18 @@ public class VolunteerEventsActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Загрузка");
         progressDialog.setCancelable(false);
+        
+        ArrayAdapter<CharSequence> adapterVolunteerFilter = ArrayAdapter.createFromResource(this, R.array.items_for_filter_of_events_for_volunteer, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapterEmployeeFilter = ArrayAdapter.createFromResource(this, R.array.items_for_filter_of_events_for_employee, android.R.layout.simple_spinner_dropdown_item);
 
-        ArrayAdapter<CharSequence> adapterFilter = ArrayAdapter.createFromResource(this, R.array.items_for_filter_of_events_for_volunteer, android.R.layout.simple_spinner_dropdown_item);
-        filter.setAdapter(adapterFilter);
+
+        if(user.getPost().equals("student")){
+            filter.setAdapter(adapterVolunteerFilter);
+        } else {
+            filter.setAdapter(adapterEmployeeFilter);
+        }
+        
+        
         filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -82,7 +91,8 @@ public class VolunteerEventsActivity extends AppCompatActivity {
                         });
                         return;
                     }
-                    case "Все мероприятия": {
+                    case "Все мероприятия":
+                    case "Рассмотреть заявки": {
                         progressDialog.show();
                         query.whereGreaterThan("date", new Date());
                         query.findInBackground((objects, e) -> {
@@ -100,6 +110,20 @@ public class VolunteerEventsActivity extends AppCompatActivity {
                         progressDialog.show();
                         query.whereLessThan("date", new Date());
                         query.whereEqualTo("volunteers", userObj);
+                        query.findInBackground((objects, e) -> {
+                            progressDialog.dismiss();
+                            if (e == null) {
+                                VolunteerAdapterEvents adapter = new VolunteerAdapterEvents(view.getContext(), objects);
+                                listView.setAdapter(adapter);
+                            } else {
+
+                            }
+                        });
+                        return;
+                    }
+                    case "Сделать отчет": {
+                        progressDialog.show();
+                        query.whereLessThan("date", new Date());
                         query.findInBackground((objects, e) -> {
                             progressDialog.dismiss();
                             if (e == null) {

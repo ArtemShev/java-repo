@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.volunteerapp.EventTreatmentActivity;
 import com.example.volunteerapp.R;
 import com.example.volunteerapp.model.User;
 import com.parse.GetCallback;
@@ -35,34 +36,35 @@ import java.util.zip.Inflater;
 
 public class AdapterForEventTreatment extends BaseAdapter  {
 
-
-//    private ArrayList<User> list ;
+    private String id;
     private List<ParseObject> list;
     private LayoutInflater inflater ;
     private Context context;
 
-    public AdapterForEventTreatment (Context context, List<ParseObject> list){
+    public AdapterForEventTreatment (Context context, List<ParseObject> list, String id){
         this.context = context;
         this.list = list;
+        this.id = id;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+
+    public void remove(int position){
+        list.remove(list.get(position));
+    }
     @Override
     public int getCount() {
         return list.size();
     }
-
     @Override
     public long getItemId(int position) {
         return position;
 
     }
-
     @Override
     public ParseObject getItem(int pos) {
         return list.get(pos);
     }
-
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         View v = view;
@@ -73,39 +75,52 @@ public class AdapterForEventTreatment extends BaseAdapter  {
         }
         TextView userName = v.findViewById(R.id.user_name_of_item);
         ImageButton acceptButton = v.findViewById(R.id.acceptButton_of_item);
-        acceptButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton cancelButton = v.findViewById(R.id.cancelButton_of_item);
 
-            @Override
-            public void onClick(View view) {
-                ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Event");
-                parseV.getInBackground("kGgJq7jCKp", new GetCallback<ParseObject>() {
-                    public void done(ParseObject event, ParseException e) {
-                        if (e == null) {
-                            ParseRelation<ParseObject> relation = event.getRelation("volunteers");
-                                    relation.add(getItem(i));
-
-                            event.saveInBackground(new SaveCallback() {
-                                @Override
-                                public void done(ParseException e) {
-                                    if (e == null) {
-                                        Log.d(TAG, "sucess" );
-                                    } else {
-                                        Log.d(TAG, "not sucess"+ e );
-                                    }
-                                }
-                            });
+        acceptButton.setOnClickListener(view1 -> {
+            ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Event");
+            parseV.getInBackground(id, (event, e) -> {
+                if (e == null) {
+                    ParseRelation<ParseObject> relationVolunteers = event.getRelation("volunteers");
+                    ParseRelation<ParseObject> relationApplication = event.getRelation("applications");
+                    relationApplication.remove(getItem(i));
+                    relationVolunteers.add(getItem(i));
+                    event.saveInBackground(e1 -> {
+                        if (e1 == null) {
+                            Log.d(TAG, "sucess" ); //Заменить на всплывающее окно
+                            remove(i);
+                            notifyDataSetChanged();
                         } else {
-                            Log.d(TAG, "not sucess" );
+                            Log.d(TAG, "not sucess"+ e1);
                         }
-                    }
-                });
-            }
+                    });
+                } else {
+                    Log.d(TAG, "not sucess" );
+                }
             });
+        });
+        cancelButton.setOnClickListener(view1 -> {
+            ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Event");
+            parseV.getInBackground(id, (event, e) -> {
+                if (e == null) {
+                    ParseRelation<ParseObject> relationApplication = event.getRelation("applications");
+                    relationApplication.remove(getItem(i));
+                    event.saveInBackground(e1 -> {
+                        if (e1 == null) {
+                            Log.d(TAG, "sucess" );
+                            remove(i);
+                            notifyDataSetChanged();
+                        } else {
+                            Log.d(TAG, "not sucess"+ e1);
+                        }
+                    });
+                } else {
+                    Log.d(TAG, "not sucess" );
+                }
+            });
+        });
 
-//        Button cancelButton = v.findViewById(R.id.cancelButton_of_item);
-//        userName.setText(getItem(i).getLastname()+ getItem(i).getFirstname()+ getItem(i).getPatronymic());
-       userName.setText(getItem(i).getString("lastname")+ " "+ getItem(i).getString("firstname")+ " "+ getItem(i).getString("patronymic"));
-//        userName.setText(getItem(i));
+        userName.setText(getItem(i).getString("lastname")+ " "+ getItem(i).getString("firstname")+ " "+ getItem(i).getString("patronymic"));
         return v;
     }
 
