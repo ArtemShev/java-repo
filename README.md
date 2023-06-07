@@ -6,3 +6,10 @@
 2. Сохранить его на телефон.
 3. Открыть файл.
 4. Установить как приложение.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+This application was created to improve the communication of volunteer movements. Prerequisites: Android 7 or higher. In order to use the application is necessary.
+
+Download APK file.
+Save it to your phone.
+Open file.
+Install as an app.
