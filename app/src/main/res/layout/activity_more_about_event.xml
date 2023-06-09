@@ -5,18 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/light_primary"
     tools:context=".MoreAboutEventActivity">
-
-    <TextView
-        android:id="@+id/textViewTitleOfEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:text="Название"
-        android:textColor="@color/teal_700"
-        android:textSize="18sp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -36,14 +26,26 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/textViewTitleOfEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:text="Название"
+        android:textColor="@color/primary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/textView6"
         android:layout_marginTop="25dp"
         android:layout_marginStart="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/venue"
-        android:textColor="@color/teal_700"
-        android:textSize="15sp"
+        android:textColor="@color/primary"
+        android:textSize="18sp"
         />
 
     <TextView
@@ -64,8 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/datetime"
-        android:textColor="@color/teal_700"
-        android:textSize="15sp"/>
+        android:textColor="@color/primary"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/textViewDateOfEvent"
@@ -84,8 +86,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/organizer"
-        android:textColor="@color/teal_700"
-        android:textSize="15sp"/>
+        android:textColor="@color/primary"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/textViewOrganizerOfEvent"
@@ -104,8 +106,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quantity"
-        android:textColor="@color/teal_700"
-        android:textSize="15sp" />
+        android:textColor="@color/primary"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,7 +117,7 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:progressBackgroundTint="@color/teal_200"
+            android:progressBackgroundTint="@color/primary"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -144,7 +146,7 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/teal_200"
+            android:backgroundTint="@color/primary"
             android:text="Подать заявку"
             android:textColor="@color/white" />
         <Button
@@ -152,7 +154,7 @@
             android:layout_width="230dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/teal_200"
+            android:backgroundTint="@color/primary"
             android:text="Посмотреть заявки"
             android:textColor="@color/white" />
         <Button
@@ -160,7 +162,7 @@
             android:layout_width="230dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/teal_200"
+            android:backgroundTint="@color/primary"
             android:text="Сделать отчёт"
             android:textColor="@color/white" />
     </LinearLayout>

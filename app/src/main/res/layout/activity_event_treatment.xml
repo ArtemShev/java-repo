@@ -11,7 +11,7 @@
         android:id="@+id/textView2"
         android:layout_width="271dp"
         android:layout_height="57dp"
-        android:text="Мероприятие"
+        android:text="@string/mero"
         android:gravity="center"
         android:textColor="@color/teal_700"
         android:textSize="18sp"

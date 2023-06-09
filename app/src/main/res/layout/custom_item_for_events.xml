@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardCornerRadius="@dimen/car_ui_body3_size"
+    app:cardCornerRadius="24sp"
     android:backgroundTint="@color/white"
     app:strokeColor="@color/teal_200"
     app:strokeWidth="1dp">
 
     <LinearLayout
+        android:background="@color/light_primary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -65,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/teal_200"
+                android:backgroundTint="@color/primary"
                 android:text="Подробнее" />
         </LinearLayout>
 

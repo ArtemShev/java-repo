@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/teal_700">
+        android:background="@color/primary">
 
         <TextView
             android:id="@+id/textView2"
@@ -23,6 +23,7 @@
             android:textSize="16sp"
             android:gravity="center"
             android:text="@string/filter_of_events"
+            android:textStyle="bold"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
@@ -41,6 +42,7 @@
     </LinearLayout>
 
     <ListView
+
         android:id="@+id/volunteerListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
