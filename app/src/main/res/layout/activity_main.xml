@@ -7,65 +7,82 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/fullnameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/fio"
-        android:textColor="@color/teal_700"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/rateView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/rate"
-        android:textAlignment="center"
-        android:textColor="@color/purple_500"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="412dp"
+        android:layout_height="733dp"
+        android:background="@color/light_primary"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-1dp">
 
-    <Button
-        android:id="@+id/toEventButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="324dp"
-        android:text="К мероприятиям"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rateView" />
+        <ImageButton
+            android:id="@+id/imageButtonExit"
+            android:layout_width="50dp"
+            android:layout_height="47dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/cancel"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="683dp" />
 
-    <ImageView
-        android:id="@+id/rateImageView"
-        android:layout_width="262dp"
-        android:layout_height="195dp"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rateView"
-        app:srcCompat="@drawable/example_img" />
+        <Button
+            android:id="@+id/toEventButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="К мероприятиям"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="107dp"
+            tools:layout_editor_absoluteY="669dp" />
 
-    <ImageButton
-        android:id="@+id/imageButtonExit"
-        android:layout_width="50dp"
-        android:layout_height="47dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/cancel" />
+        <TextView
+            android:id="@+id/fullnameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fio"
+            android:textColor="@color/primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <TextView
+            android:id="@+id/fullnameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/age_city"
+            android:textColor="@color/primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="121dp"
+            tools:layout_editor_absoluteY="350dp" />
+
+        <TextView
+            android:id="@+id/fullnameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rate"
+            android:textColor="@color/primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="249dp"
+            android:layout_height="325dp"
+            app:srcCompat="@drawable/cat"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="-23dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:indeterminateTint="@color/primary"
+            android:layout_width="128dp"
+            android:layout_height="123dp"
+            tools:layout_editor_absoluteX="140dp"
+            tools:layout_editor_absoluteY="469dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
