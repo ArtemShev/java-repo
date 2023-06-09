@@ -62,6 +62,8 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
+        } else {
+            Toast.makeText(SignUpActivity.this, "Заполните все поля!", Toast.LENGTH_LONG).show();
         }
     }
 }

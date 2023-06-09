@@ -101,22 +101,22 @@ public class MoreAboutEventActivity extends AppCompatActivity {
                             throw new RuntimeException(ex);
                         }
                         ParseRelation<ParseObject> relation = ev.getRelation("applications");
+                        ev.put("quantity_current", ev.getInt("quantity_current")+1);
                         relation.add(userObj);
                         ev.saveInBackground(e1 -> {
                             progressDialog.dismiss();
+                            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
                             if (e1 == null) {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
                                 alert.setTitle("Заявка отправлена");
                                 alert.setMessage("После одоборения заявки мероприятие появится в разделе 'Мои мероприятия'");
                                 alert.setPositiveButton("Ок", (dialogInterface, i) -> dialogInterface.dismiss());
-                                alert.show();
+
                             } else {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
                                 alert.setTitle("Заявка не отправлена!");
                                 alert.setMessage("Вы уже отправляли заявку");
                                 alert.setPositiveButton("Ок", (dialogInterface, i) -> dialogInterface.dismiss());
-                                alert.show();
                             }
+                            alert.show();
                         });
                     } else {
                         progressDialog.dismiss();

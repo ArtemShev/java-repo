@@ -6,12 +6,11 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="24sp"
-    android:backgroundTint="@color/white"
-    app:strokeColor="@color/teal_200"
+    android:backgroundTint="@color/light_primary"
+    app:strokeColor="@color/primary"
     app:strokeWidth="1dp">
 
     <LinearLayout
-        android:background="@color/light_primary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="18sp"
-            android:textColor="@color/teal_700"
+            android:textColor="@color/primary"
             android:text="Помощь приюту" />
 
         <androidx.cardview.widget.CardView
@@ -55,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@color/teal_700"
+                android:textColor="@color/primary"
                 android:gravity="center"
                 android:textSize="14sp"
                 android:text="21-06-2023 16:00" />
