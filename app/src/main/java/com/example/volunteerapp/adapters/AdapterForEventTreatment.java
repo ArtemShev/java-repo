@@ -74,8 +74,8 @@ public class AdapterForEventTreatment extends BaseAdapter  {
             v = inflater.inflate(R.layout.custom_lv_treatment_item, viewGroup, false);
         }
         TextView userName = v.findViewById(R.id.user_name_of_item);
-        ImageButton acceptButton = v.findViewById(R.id.acceptButton_of_item);
-        ImageButton cancelButton = v.findViewById(R.id.cancelButton_of_item);
+        Button acceptButton = v.findViewById(R.id.acceptButton_of_item);
+        Button cancelButton = v.findViewById(R.id.cancelButton_of_item);
 
         acceptButton.setOnClickListener(view1 -> {
             ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Event");

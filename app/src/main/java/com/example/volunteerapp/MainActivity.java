@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-        String nameString ="Здравствуй, "+ user.getLastname()+" "+user.getFirstname()+" "+user.getPatronymic();
+        String nameString = user.getLastname()+" "+user.getFirstname()+" "+user.getPatronymic();
         TextView fullnameView = findViewById(R.id.fullnameView);
         fullnameView.setText(nameString);
 
