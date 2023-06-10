@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import com.example.volunteerapp.adapters.VolunteerAdapterEvents;
 import com.example.volunteerapp.model.User;
 import com.example.volunteerapp.preferences.UserPreferences;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -25,11 +26,10 @@ import java.util.List;
 
 public class VolunteerEventsActivity extends AppCompatActivity {
 
-//    Button logoutButton;
     private ListView listView;
     private Spinner filter;
     private User user;
-
+    private FloatingActionButton addEventButton;
     private ProgressDialog progressDialog;
 
 
@@ -43,6 +43,7 @@ public class VolunteerEventsActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.volunteerListView);
         filter = findViewById(R.id.spinnerFilter);
+        addEventButton = findViewById(R.id.addEventActionButton);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Загрузка");
@@ -54,6 +55,7 @@ public class VolunteerEventsActivity extends AppCompatActivity {
 
         if(user.getPost().equals("student")){
             filter.setAdapter(adapterVolunteerFilter);
+            addEventButton.setVisibility(View.GONE);
         } else {
             filter.setAdapter(adapterEmployeeFilter);
         }
@@ -142,27 +144,5 @@ public class VolunteerEventsActivity extends AppCompatActivity {
 
             }
         });
-
-//        query.findInBackground((objects, e) -> {
-//            if (e == null) {
-//                VolunteerAdapterEvents adapter = new VolunteerAdapterEvents(this, objects);
-//                listView.setAdapter(adapter);
-//            } else {
-//            }
-//        });
-        // Код для создании кнопки выхода из аккаунта
-//        logoutButton = findViewById(R.id.logoutButton);
-//        logoutButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                UserPreferences uPref = new UserPreferences(view.getContext());
-//                uPref.setEntered(false);
-//                Intent intent = new Intent(EventsActivity.this, SignInActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-
-
     }
 }

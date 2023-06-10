@@ -69,11 +69,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="249dp"
-            android:layout_height="325dp"
+            android:layout_width="250dp"
+            android:layout_height="253dp"
             app:srcCompat="@drawable/cat"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="-23dp" />
+            tools:layout_editor_absoluteX="81dp"
+            tools:layout_editor_absoluteY="5dp" />
 
         <ProgressBar
             android:id="@+id/progressBar2"

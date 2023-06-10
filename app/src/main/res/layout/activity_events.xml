@@ -8,50 +8,70 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/primary">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/filter_of_events"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+
 
         <Spinner
             android:id="@+id/spinnerFilter"
-            android:layout_width="180dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            style="@style/spinner_style"
             android:contentDescription="spinner"
-            android:backgroundTint="@color/white"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mero"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:layout_marginStart="12dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        android:id="@+id/volunteerListView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="4dp"
-        android:divider="@color/white"
-        android:dividerHeight="10dp"
-        tools:listitem="@layout/custom_item_for_events">
+        android:layout_height="match_parent">
 
-    </ListView>
+        <ListView
+
+            android:id="@+id/volunteerListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            android:divider="@color/white"
+            android:dividerHeight="10dp"
+            tools:listitem="@layout/custom_item_for_events">
+
+
+        </ListView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addEventActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="button"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/primary"
+            app:srcCompat="@drawable/add_icon100px"/>
+    </RelativeLayout>
 </LinearLayout>
