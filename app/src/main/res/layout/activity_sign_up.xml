@@ -90,48 +90,103 @@
                 android:inputType="textPersonName"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:baselineAligned="false"
+            android:textColorHint="@android:color/darker_gray"
+            app:boxStrokeColor="@android:color/darker_gray"
+            android:hint="@string/date_of_birthday">
             <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/ageField"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 android:ems="10"
-                android:hint="@string/date_of_birthday"
+
                 android:inputType="date"
                 android:minHeight="48dp"
                 mask:mask="####-##-##" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:baselineAligned="false"
+            android:textColorHint="@android:color/darker_gray"
+            app:boxStrokeColor="@android:color/darker_gray"
+            android:hint="@string/phone_number">
             <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/phoneField"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 android:ems="10"
-                android:hint="@string/phone_number"
+
                 android:inputType="phone"
                 android:minHeight="48dp"
                 mask:mask="+7(###) ### ## ##" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loginLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:baselineAligned="false"
+            android:textColorHint="@android:color/darker_gray"
+            app:boxStrokeColor="@android:color/darker_gray"
+            android:hint="@string/login">
             <EditText
                 android:id="@+id/loginField"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 android:ems="10"
-                android:hint="@string/login"
+
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:baselineAligned="false"
+            android:textColorHint="@android:color/darker_gray"
+            app:boxStrokeColor="@android:color/darker_gray"
+            android:hint="@string/password">
             <EditText
                 android:id="@+id/password1Field"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 android:ems="10"
-                android:hint="@string/password"
+
                 android:inputType="textPassword"
                 android:minHeight="48dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/enterSignUpButton"
