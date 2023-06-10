@@ -123,9 +123,4 @@ public class AdapterForEventTreatment extends BaseAdapter  {
         userName.setText(getItem(i).getString("lastname")+ " "+ getItem(i).getString("firstname")+ " "+ getItem(i).getString("patronymic"));
         return v;
     }
-
-
-
-
-
 }

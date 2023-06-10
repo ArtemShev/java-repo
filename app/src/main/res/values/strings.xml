@@ -31,6 +31,15 @@
 
     <string name="quantity">Количество участников</string>
     <string name="mero">Мероприятия</string>
+    <string name="enter_title_of_event">Введите название мероприятия</string>
+    <string name="title">Название</string>
+    <string name="enter_description_of_event">Введите описания мероприятия</string>
+    <string name="description">Описание</string>
+    <string name="enter_date_of_event">Введите дату мероприятия</string>
+    <string name="date">Дата</string>
+    <string name="enter_time_of_event">Выберите время мероприятия</string>
+    <string name="enter_quantity_of_participants">Введите количество участников</string>
+    <string name="enter_venue_of_event">Введите место проведения мероприятия</string>
 
 
 </resources>

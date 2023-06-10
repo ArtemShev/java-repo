@@ -65,7 +65,6 @@ public class VolunteerAdapterEvents extends BaseAdapter {
             view1.getContext().startActivity(intent);
         });
 
-        ImageView img = v.findViewById(R.id.imageOfEvent);
         title.setText(getItem(i).getString("title"));
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         date.setText(format.format(getItem(i).getDate("date")));

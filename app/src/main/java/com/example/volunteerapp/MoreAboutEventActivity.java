@@ -27,7 +27,7 @@ import java.util.Date;
 
 public class MoreAboutEventActivity extends AppCompatActivity {
 
-    TextView title, venue, organizer, date, quantity;
+    TextView title, venue, organizer, date, quantity, description;
     ProgressBar progress;
     Button applyButton, applicationButton, reportButton;
     ParseObject event;
@@ -50,6 +50,8 @@ public class MoreAboutEventActivity extends AppCompatActivity {
         organizer = findViewById(R.id.textViewOrganizerOfEvent);
         date = findViewById(R.id.textViewDateOfEvent);
         quantity = findViewById(R.id.textViewQuantityOfEvent);
+        description = findViewById(R.id.textViewDescriptionOfEvent);
+
         progress = findViewById(R.id.progressBar);
         applyButton = findViewById(R.id.buttonApply);
         applicationButton = findViewById(R.id.buttonApplication);
@@ -62,6 +64,7 @@ public class MoreAboutEventActivity extends AppCompatActivity {
             title.setText(event.getString("title"));
             venue.setText(event.getString("venue"));
             organizer.setText(event.getString("organizer"));
+            description.setText(event.getString("description"));
             SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm");
             date.setText(format.format(event.getDate("date")));
 
