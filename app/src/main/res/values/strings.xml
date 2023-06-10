@@ -40,6 +40,9 @@
     <string name="enter_time_of_event">Выберите время мероприятия</string>
     <string name="enter_quantity_of_participants">Введите количество участников</string>
     <string name="enter_venue_of_event">Введите место проведения мероприятия</string>
+    <string name="age">Возраст</string>
+    <string name="accept">Принять</string>
+    <string name="cancel">Отклонить</string>
 
 
 </resources>
