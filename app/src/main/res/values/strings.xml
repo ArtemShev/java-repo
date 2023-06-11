@@ -20,7 +20,7 @@
     <string name="filter_of_events">Фильтр мероприятий</string>
     <string name="fio">Ivanov Ivan\n</string>
     <string name="age_city">25 лет, Москва\n</string>
-    <string name="rate">rate points:\n</string>
+    <string name="rate">Оценить</string>
 
 
     <string name="venue">Место проведения</string>
@@ -43,6 +43,10 @@
     <string name="age">Возраст</string>
     <string name="accept">Принять</string>
     <string name="cancel">Отклонить</string>
+    <string name="applications">Заявки</string>
+    <string name="reports">Отчёты</string>
+    <string name="points">Баллы</string>
+    <string name="choose_points">Выберите количество очков</string>
 
 
 </resources>

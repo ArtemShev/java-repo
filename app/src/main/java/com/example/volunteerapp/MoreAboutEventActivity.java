@@ -144,6 +144,11 @@ public class MoreAboutEventActivity extends AppCompatActivity {
             intent.putExtra("event", event);
             view.getContext().startActivity(intent);
         });
+        reportButton.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), EventReportActivity.class);
+            intent.putExtra("event", event);
+            view.getContext().startActivity(intent);
+        });
 
     }
 }

@@ -9,29 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.volunteerapp.EventTreatmentActivity;
 import com.example.volunteerapp.R;
-import com.example.volunteerapp.model.User;
-import com.parse.GetCallback;
-import com.parse.Parse;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
-import com.parse.SaveCallback;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.zip.Inflater;
+
 
 
 public class AdapterForEventTreatment extends BaseAdapter  {
@@ -59,7 +46,6 @@ public class AdapterForEventTreatment extends BaseAdapter  {
     @Override
     public long getItemId(int position) {
         return position;
-
     }
     @Override
     public ParseObject getItem(int pos) {
@@ -74,8 +60,25 @@ public class AdapterForEventTreatment extends BaseAdapter  {
             v = inflater.inflate(R.layout.custom_lv_treatment_item, viewGroup, false);
         }
         TextView userName = v.findViewById(R.id.user_name_of_item);
+        TextView userAge = v.findViewById(R.id.ageTextCustomItem);
+        TextView userRating = v.findViewById(R.id.ratingTextCustomItem);
+        TextView userPhone = v.findViewById(R.id.phoneTextCustomItem);
         Button acceptButton = v.findViewById(R.id.acceptButton_of_item);
         Button cancelButton = v.findViewById(R.id.cancelButton_of_item);
+
+        userName.setText(getItem(i).getString("lastname")+ " "+ getItem(i).getString("firstname")+ " "+ getItem(i).getString("patronymic"));
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday;
+        try {
+            birthday = myFormat.parse(getItem(i).getString("date_of_birthday"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        Long time = new Date().getTime() / 1000 - birthday.getTime() / 1000;
+        int years = Math.round(time) / 31536000;
+        userAge.setText("Возраст: "+years);
+        userRating.setText("Рейтинг: " + getItem(i).getInt("points"));
+        userPhone.setText(getItem(i).getString("phone"));
 
         acceptButton.setOnClickListener(view1 -> {
             ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Event");
@@ -119,8 +122,6 @@ public class AdapterForEventTreatment extends BaseAdapter  {
                 }
             });
         });
-
-        userName.setText(getItem(i).getString("lastname")+ " "+ getItem(i).getString("firstname")+ " "+ getItem(i).getString("patronymic"));
         return v;
     }
 }

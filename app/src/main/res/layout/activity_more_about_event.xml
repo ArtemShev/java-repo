@@ -1,149 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/light_primary"
+    android:background="@color/white"
     tools:context=".MoreAboutEventActivity">
-
-    <TextView
-        android:id="@+id/textViewTitleOfEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="15dp"
-        android:text="Название"
-        android:textColor="@color/primary"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/description"
-        android:textColor="@color/primary"
-        android:textSize="18sp"
-        />
-
-    <TextView
-        android:id="@+id/textViewDescriptionOfEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/gray"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="0dp"
-
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/venue"
-        android:textColor="@color/primary"
-        android:textSize="18sp"
-        />
-
-    <TextView
-        android:id="@+id/textViewVenueOfEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/gray"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="0dp"
-
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/datetime"
-        android:textColor="@color/primary"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/textViewDateOfEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/gray"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/organizer"
-        android:textColor="@color/primary"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/textViewOrganizerOfEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/gray"
-        android:textSize="14sp"/>
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quantity"
-        android:textColor="@color/primary"
-        android:textSize="18sp" />
-
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressBackgroundTint="@color/primary"
-            android:layout_width="200dp"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_bg">
+        <TextView
+            android:id="@+id/textViewTitleOfEvent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="8dp"/>
+            android:layout_marginTop="15dp"
+            android:text="Название"
+            android:textColor="@color/primary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textColor="@color/primary"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textViewQuantityOfEvent"
-            android:layout_width="0dp"
+            android:id="@+id/textViewDescriptionOfEvent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="10/15"
             android:textColor="@color/gray"
-            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
 
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/venue"
+            android:textColor="@color/primary"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewVenueOfEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/datetime"
+            android:textColor="@color/primary"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textViewDateOfEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/organizer"
+            android:textColor="@color/primary"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textViewOrganizerOfEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/gray"
             android:textSize="14sp"/>
-    </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity"
+            android:textColor="@color/primary"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:progressBackgroundTint="@color/primary"
+                android:progressTint="@color/primary"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:id="@+id/textViewQuantityOfEvent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="10/15"
+                android:textColor="@color/gray"
+                android:layout_gravity="center"
+
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical">
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:layout_below="@id/linear">
 
         <Button
             android:id="@+id/buttonApply"
@@ -170,4 +175,4 @@
             android:text="Сделать отчёт"
             android:textColor="@color/white" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
