@@ -30,6 +30,7 @@
 на кнопку + можно добавить заявку группы на мероприятие
 
 **Функции вожатого**
+
 Вожатый может создавать мероприятия и оценивать их участников.
 Чтобы создать мероприятие вожатый должен нажать на + на странице мероприятий, заполнить форму и нажать "создать".
 Чтобы оценить участника мероприятия, нужно на странице мероприятий выбрать фильтр "Сделать отчет", на экране появится список мероприятий, далее нажимается кнопка "подробнее", под информацией о мероприятии находится кнопка "создать отчёт", у каждого участника необходимо выбрать количество баллов и нажать кнопку "оценить".
@@ -60,3 +61,9 @@ Here you can see detailed information about the event, as well as its participan
 
 **Applications**
 on the + button, you can add a group request for an event
+
+**Functions of counselor**
+
+The leader can create events and evaluate their participants.
+To create an event, the counselor must click on the + on the event page, fill out the form and click "create".
+To evaluate a participant of the event, you need to select the "Make a report" filter on the event page, a list of events will appear on the screen, then the "details" button is pressed, under the information about the event there is a "create report" button, for each participant you need to select the number of points and click the button "estimate".
