@@ -4,29 +4,39 @@
 Сохранить его на телефон.
 Открыть файл.
 Установить как приложение.
-Регистрация/Вход Чтобы зарегистрироваться, нужно внести свои данные и нажать кнопку "Зарегестрироваться"
+Регистрация/Вход. Чтобы зарегистрироваться, нужно внести свои данные и нажать кнопку "Зарегестрироваться"
 
-Личная страница На данной странице отображаются данные пользователя, его уровень, а также избранные события.
+Личная страница. На данной странице отображаются данные пользователя, его уровень, а также избранные события.
 
-Страница уровней активности Здесь вы можете отслеживать свой прогресс, а также увидеть подробный отчет о ваших достижениях
+Страница уровней активности. Здесь вы можете отслеживать свой прогресс, а также увидеть подробный отчет о ваших достижениях
 
-Страница мероприятий На данной странице отображается весь список доступных пользователю мероприятий, на которые можно записаться. Для этого нужно на выбранном мероприятии нажать кнопку "Принять участие". Для того, чтобы узнать больше информации о выбранном мероприятии нажмите кнопку "Подробнее"
+Страница мероприятий. На данной странице отображается весь список доступных пользователю мероприятий, на которые можно записаться. Для этого нужно на выбранном мероприятии нажать кнопку "Принять участие". Для того, чтобы узнать больше информации о выбранном мероприятии нажмите кнопку "Подробнее"
 
-Страница мероприятия Здесь отображается подробная инфоррмация о мероприятии, а также его участники
+Страница мероприятия. Здесь отображается подробная инфоррмация о мероприятии, а также его участники
 
 Заявки на кнопку + можно добавить заявку группы на мероприятие
+
+Функции вожатого. Вожатый может создавать мероприятия и оценивать их участников.
+Чтобы создать мероприятие вожатый должен нажать на + на странице мероприятий, заполнить форму и нажать "создать".
+Чтобы оценить участника мероприятия, нужно на странице мероприятий выбрать фильтр "Сделать отчет", на экране появится список мероприятий, далее нажимается кнопка "подробнее", под информацией о мероприятии находится кнопка "создать отчёт", у каждого участника необходимо выбрать количество баллов и нажать кнопку "оценить".
 This application was created to improve the communication of volunteer movements. Prerequisites: Android 7 or higher. In order to use the application is necessary.
 
 Download APK file. Save it to your phone. Open file. Install as an app.
 
-Register Login To register, you need to enter your data and click the "Register" button
+Register/Login. To register, you need to enter your data and click the "Register" button
 
-Personal page This page displays user data, user level, and favorite events.
+Personal page. This page displays user data, user level, and favorite events.
 
-Activity Levels Page Here you can track your progress as well as see a detailed report of your achievements.
+Activity Levels Page. Here you can track your progress as well as see a detailed report of your achievements.
 
-Event Page This page displays the entire list of events available to the user for which you can sign up. To do this, click on the "Participate" button on the selected event. To find out more information about the selected event, click the "Details" button
+Events Page. This page displays the entire list of events available to the user for which you can sign up. To do this, click on the "Participate" button on the selected event. To find out more information about the selected event, click the "Details" button
 
-Event Page Here you can see detailed information about the event, as well as its participants
+Event Page. Here you can see detailed information about the event, as well as its participants
 
 Applications on the + button, you can add a group request for an event
+
+Functions of counselor.
+
+The leader can create events and evaluate their participants.
+To create an event, the counselor must click on the + on the event page, fill out the form and click "create".
+To evaluate a participant of the event, you need to select the "Make a report" filter on the event page, a list of events will appear on the screen, then the "details" button is pressed, under the information about the event there is a "create report" button, for each participant you need to select the number of points and click the button "estimate".
