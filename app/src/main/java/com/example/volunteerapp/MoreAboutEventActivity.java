@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
@@ -88,6 +90,8 @@ public class MoreAboutEventActivity extends AppCompatActivity {
             }
         }
 
+
+
         applyButton.setOnClickListener(view -> {
             progressDialog.show();
             ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Event");
@@ -103,24 +107,35 @@ public class MoreAboutEventActivity extends AppCompatActivity {
                         } catch (ParseException ex) {
                             throw new RuntimeException(ex);
                         }
-                        ParseRelation<ParseObject> relation = ev.getRelation("applications");
-                        ev.put("quantity_current", ev.getInt("quantity_current")+1);
-                        relation.add(userObj);
-                        ev.saveInBackground(e1 -> {
-                            progressDialog.dismiss();
-                            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
-                            if (e1 == null) {
-                                alert.setTitle("Заявка отправлена");
-                                alert.setMessage("После одоборения заявки мероприятие появится в разделе 'Мои мероприятия'");
-                                alert.setPositiveButton("Ок", (dialogInterface, i) -> dialogInterface.dismiss());
+                        ParseQuery<ParseObject> qPart = new ParseQuery<>("Participant");
+                        qPart.whereEqualTo("user", ParseUser.getCurrentUser());
+                        qPart.whereEqualTo("event", event);
 
-                            } else {
-                                alert.setTitle("Заявка не отправлена!");
-                                alert.setMessage("Вы уже отправляли заявку");
-                                alert.setPositiveButton("Ок", (dialogInterface, i) -> dialogInterface.dismiss());
-                            }
-                            alert.show();
-                        });
+                        try {
+                            qPart.getFirst();
+                        } catch (ParseException ex) {
+                            ParseObject currentPart = new ParseObject("Participant");
+                            currentPart.put("user", userObj);
+                            currentPart.put("event", ev);
+                            currentPart.put("application", true);
+                            currentPart.saveInBackground(e1 -> {
+                                progressDialog.dismiss();
+                                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                                if (e1 == null) {
+                                    applyButton.setText("Заявка отправлена");
+                                    applyButton.setClickable(false);
+                                    alert.setTitle("Заявка отправлена");
+                                    alert.setMessage("После одоборения заявки мероприятие появится в разделе 'Мои мероприятия'");
+                                    alert.setPositiveButton("Ок", (dialogInterface, i) -> dialogInterface.dismiss());
+
+                                } else {
+                                    alert.setTitle("Ошибка!");
+                                    alert.setMessage("Заявка не отправлена");
+                                    alert.setPositiveButton("Ок", (dialogInterface, i) -> dialogInterface.dismiss());
+                                }
+                                alert.show();
+                            });
+                        }
                     } else {
                         progressDialog.dismiss();
                         AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
@@ -129,7 +144,6 @@ public class MoreAboutEventActivity extends AppCompatActivity {
                         alert.setPositiveButton("Ок", (dialogInterface, i) -> dialogInterface.dismiss());
                         alert.show();
                     }
-
                 } else {
                     progressDialog.dismiss();
                     AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
@@ -139,6 +153,8 @@ public class MoreAboutEventActivity extends AppCompatActivity {
                 }
             });
         });
+
+
         applicationButton.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), EventTreatmentActivity.class);
             intent.putExtra("event", event);
@@ -149,6 +165,27 @@ public class MoreAboutEventActivity extends AppCompatActivity {
             intent.putExtra("event", event);
             view.getContext().startActivity(intent);
         });
+
+
+
+        ParseQuery<ParseObject> queryPart = new ParseQuery<>("Participant");
+        queryPart.whereEqualTo("user", ParseUser.getCurrentUser());
+        queryPart.whereEqualTo("event", event);
+        try {
+            ParseObject currentPart = queryPart.getFirst();
+            if(currentPart.getBoolean("application")){
+                applyButton.setText("Заявка отправлена");
+                applyButton.setClickable(false);
+            } else if(currentPart.getBoolean("participant")){
+                applyButton.setText("Заявка принята");
+                applyButton.setClickable(false);
+            } else if(!currentPart.getBoolean("application") && !currentPart.getBoolean("participant")){
+                applyButton.setText("Заявка отклонена");
+                applyButton.setClickable(false);
+            }
+        } catch (ParseException ignored) {
+
+        }
 
     }
 }

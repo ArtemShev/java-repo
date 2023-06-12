@@ -2,6 +2,7 @@ package com.example.volunteerapp.adapters;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +11,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+
 import com.example.volunteerapp.R;
+import com.example.volunteerapp.SignInActivity;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
@@ -22,7 +30,7 @@ import java.util.List;
 
 
 public class AdapterForEventTreatment extends BaseAdapter  {
-
+    private ProgressDialog progressDialog;
     private String id;
     private List<ParseObject> list;
     private LayoutInflater inflater ;
@@ -66,39 +74,79 @@ public class AdapterForEventTreatment extends BaseAdapter  {
         Button acceptButton = v.findViewById(R.id.acceptButton_of_item);
         Button cancelButton = v.findViewById(R.id.cancelButton_of_item);
 
-        userName.setText(getItem(i).getString("lastname")+ " "+ getItem(i).getString("firstname")+ " "+ getItem(i).getString("patronymic"));
+        ParseObject user = getItem(i).getParseObject("user");
+        try {
+            user.fetchIfNeeded();
+        } catch (com.parse.ParseException e) {
+            throw new RuntimeException(e);
+        }
+        userName.setText(user.getString("lastname")+ " "+ user.getString("firstname")+ " "+ user.getString("patronymic"));
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday;
         try {
-            birthday = myFormat.parse(getItem(i).getString("date_of_birthday"));
+            birthday = myFormat.parse(user.getString("date_of_birthday"));
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
         Long time = new Date().getTime() / 1000 - birthday.getTime() / 1000;
         int years = Math.round(time) / 31536000;
         userAge.setText("Возраст: "+years);
-        userRating.setText("Рейтинг: " + getItem(i).getInt("points"));
-        userPhone.setText(getItem(i).getString("phone"));
+        userRating.setText("Рейтинг: " + user.getInt("points"));
+        userPhone.setText(user.getString("phone"));
+
+        progressDialog = new ProgressDialog(v.getContext());
+        progressDialog.setMessage("Загрузка");
+        progressDialog.setCancelable(false);
 
         acceptButton.setOnClickListener(view1 -> {
-            ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Event");
-            parseV.getInBackground(id, (event, e) -> {
+            progressDialog.show();
+            ParseQuery<ParseObject> parseV = ParseQuery.getQuery("Participant");
+            parseV.getInBackground(getItem(i).getObjectId(), (part, e) -> {
                 if (e == null) {
-                    ParseRelation<ParseObject> relationVolunteers = event.getRelation("volunteers");
-                    ParseRelation<ParseObject> relationApplication = event.getRelation("applications");
-                    relationApplication.remove(getItem(i));
-                    relationVolunteers.add(getItem(i));
-                    event.saveInBackground(e1 -> {
-                        if (e1 == null) {
-                            Log.d(TAG, "sucess" ); //Заменить на всплывающее окно
-                            remove(i);
-                            notifyDataSetChanged();
+                    ParseQuery<ParseObject> evQ = new ParseQuery<>("Event");
+                    evQ.getInBackground(id, (ev, e2) -> {
+                        if(ev.getInt("quantity_current")<ev.getInt("quantity_max")){
+                            ev.put("quantity_current", ev.getInt("quantity_current")+1);
+                            ev.saveInBackground();
+                            ParseRelation<ParseObject> relationVolunteers = ev.getRelation("volunteers");
+                            relationVolunteers.add(user);
+                            ev.saveInBackground();
+                            part.put("application", false);
+                            part.put("participant", true);
+                            part.saveInBackground(e1 -> {
+                                if (e1 == null) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(view1.getContext(), "Заявка принята", Toast.LENGTH_LONG).show();
+                                    remove(i);
+                                    notifyDataSetChanged();
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(view1.getContext(), e1.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
                         } else {
-                            Log.d(TAG, "not sucess"+ e1);
+                            progressDialog.dismiss();
+                            Snackbar.make(view1, "На мероприятии максимальное количество участников", Snackbar.LENGTH_SHORT).show();
                         }
+
                     });
+
+
+//                    ParseRelation<ParseObject> relationVolunteers = event.getRelation("volunteers");
+//                    ParseRelation<ParseObject> relationApplication = event.getRelation("applications");
+//                    relationApplication.remove(getItem(i));
+//                    relationVolunteers.add(getItem(i));
+//                    event.saveInBackground(e1 -> {
+//                        if (e1 == null) {
+//                            Log.d(TAG, "sucess" ); //Заменить на всплывающее окно
+//                            remove(i);
+//                            notifyDataSetChanged();
+//                        } else {
+//                            Log.d(TAG, "not sucess"+ e1);
+//                        }
+//                    });
                 } else {
-                    Log.d(TAG, "not sucess" );
+                    Toast.makeText(view1.getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         });
