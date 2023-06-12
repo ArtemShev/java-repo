@@ -63,9 +63,7 @@ public class AdapterForEventTreatment extends BaseAdapter  {
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         View v = view;
-
         if (v == null) {
-
             v = inflater.inflate(R.layout.custom_lv_treatment_item, viewGroup, false);
         }
         TextView userName = v.findViewById(R.id.user_name_of_item);
@@ -75,21 +73,25 @@ public class AdapterForEventTreatment extends BaseAdapter  {
         Button acceptButton = v.findViewById(R.id.acceptButton_of_item);
         Button cancelButton = v.findViewById(R.id.cancelButton_of_item);
 
-        ParseQuery<ParseObject> userRatingQuery = new ParseQuery<>("Rating");
-        userRatingQuery.whereEqualTo("user", getItem(i));
-        try {
-            userPoints = userRatingQuery.getFirst();
-            userRating.setText("Рейтинг: " + userPoints.getInt("points"));
-        } catch (com.parse.ParseException e) {
-            throw new RuntimeException(e);
-        }
-
         ParseObject user = getItem(i).getParseObject("user");
         try {
             user.fetchIfNeeded();
         } catch (com.parse.ParseException e) {
             throw new RuntimeException(e);
         }
+
+        ParseQuery<ParseObject> userRatingQuery = new ParseQuery<>("Rating");
+        userRatingQuery.whereEqualTo("user", user);
+        userRatingQuery.getFirstInBackground((object, e) -> {
+            userRating.setText("Рейтинг: " + object.getInt("points"));
+        });
+//        try {
+//
+//            userRating.setText("Рейтинг: " + userPoints.getInt("points"));
+//        } catch (com.parse.ParseException e) {
+//            throw new RuntimeException(e);
+//        }
+
         userName.setText(user.getString("lastname")+ " "+ user.getString("firstname")+ " "+ user.getString("patronymic"));
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday;
