@@ -104,7 +104,7 @@
                     android:textColor="@color/primary" />
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/spinnerPoints"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:contentDescription="spinner" />
@@ -112,7 +112,7 @@
 
 
             <Button
-                android:id="@+id/cancelButton_of_item"
+                android:id="@+id/reportRateButton"
                 android:layout_width="130dp"
                 android:layout_height="50dp"
                 android:background="@drawable/round_corner"

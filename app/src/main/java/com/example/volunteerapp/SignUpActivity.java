@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 import com.vicmikhailau.maskededittext.MaskedEditText;
@@ -56,6 +58,20 @@ public class SignUpActivity extends AppCompatActivity {
             user.signUpInBackground(e -> {
                 if (e == null) {
                     Toast.makeText(SignUpActivity.this, "Вы успешно зарегестрировались!", Toast.LENGTH_LONG).show();
+                    ParseQuery<ParseObject> userQuery = new ParseQuery<>("_User");
+                    userQuery.whereEqualTo("username", loginEditText.getText().toString());
+                    try {
+                        ParseObject queryRating = new ParseObject("Rating");
+                        queryRating.put("user", userQuery.getFirst());
+                        queryRating.saveInBackground(e1 -> {
+                            if(e1!=null){
+                                Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } catch (ParseException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
                     finish();
                 } else {
                     ParseUser.logOut();

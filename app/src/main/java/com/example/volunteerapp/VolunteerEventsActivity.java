@@ -92,8 +92,7 @@ public class VolunteerEventsActivity extends AppCompatActivity {
             spinnerHours.setAdapter(adapterHours);
 
             Spinner spinnerMinutes = window_addevent.findViewById(R.id.spinnerMinutes);
-            ArrayAdapter<CharSequence> adapterMinutes = ArrayAdapter.createFromResource(this, R.array.minutes, android.R.layout.simple_spinner_item);
-            adapterMinutes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            ArrayAdapter<CharSequence> adapterMinutes = ArrayAdapter.createFromResource(this, R.array.minutes, android.R.layout.simple_spinner_dropdown_item);
             spinnerMinutes.setAdapter(adapterMinutes);
 
             alert.setNegativeButton("Отменить", (dialogInterface, i) -> dialogInterface.dismiss());

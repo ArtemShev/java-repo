@@ -18,8 +18,13 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     private int n = 0;
+    private ParseObject userParse;
+    private TextView fullnameView, rateView, ageView;
     Button toEventButton;
     ImageButton logoutButton;
     @Override
@@ -33,32 +38,34 @@ public class MainActivity extends AppCompatActivity {
         queryUser.whereEqualTo("username", user.getLogin());
         queryUser.findInBackground();
         try {
-            n = queryUser.getFirst().getInt("points");
+            userParse = queryUser.getFirst();
+            ParseQuery<ParseObject> pointsQuery = new ParseQuery<>("Rating");
+            pointsQuery.whereEqualTo("user", userParse);
+            pointsQuery.getFirstInBackground((object, e) -> {
+                n = object.getInt("points");
+            });
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
 
         String nameString = user.getLastname()+" "+user.getFirstname()+" "+user.getPatronymic();
-        TextView fullnameView = findViewById(R.id.fullnameView);
+        fullnameView = findViewById(R.id.fullnameView);
+        rateView = findViewById(R.id.mainView_rate);
+        ageView = findViewById(R.id.mainView_age);
         fullnameView.setText(nameString);
-
         String rateString ="Твой рейтинг: "+n;
-//        TextView rateView = findViewById(R.id.rateView);
-//        rateView.setText(rateString);
-//
-//        ImageView img = findViewById(R.id.rateImageView);
+        rateView.setText(rateString);
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday;
+        try {
+            birthday = myFormat.parse(userParse.getString("date_of_birthday"));
+        } catch (java.text.ParseException e) {
+            throw new RuntimeException(e);
+        }
+        Long time = new Date().getTime() / 1000 - birthday.getTime() / 1000;
+        int years = Math.round(time) / 31536000;
+        ageView.setText("Возраст: "+years);
 
-//        if (n>=0 && n<=200) {
-//            img.setImageResource(R.drawable.wooden);
-//        } else if (n>=201 && n<=400) {
-//            img.setImageResource(R.drawable.bronze);
-//        } else if (n>=401 && n<=600) {
-//            img.setImageResource(R.drawable.silver);
-//        } else if (n>=601 && n<=800){
-//            img.setImageResource(R.drawable.gold);
-//        } else if (n>=801 && n<=1000){
-//            img.setImageResource(R.drawable.brilliant);
-//        }
 
 
         toEventButton = findViewById(R.id.toEventButton);

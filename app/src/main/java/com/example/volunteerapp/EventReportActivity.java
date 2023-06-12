@@ -35,7 +35,7 @@ public class EventReportActivity extends AppCompatActivity {
             queryA.findInBackground((objectsE, ex) -> {
                 if (ex == null) {
                     if(objectsE != null){
-                        AdapterForEventReport adapter = new AdapterForEventReport(this, objectsE);
+                        AdapterForEventReport adapter = new AdapterForEventReport(this, objectsE, event.getObjectId());
                         listview.setAdapter(adapter);
                         listview.setItemsCanFocus(false);
                     }

@@ -35,6 +35,7 @@ public class AdapterForEventTreatment extends BaseAdapter  {
     private List<ParseObject> list;
     private LayoutInflater inflater ;
     private Context context;
+    private ParseObject userPoints;
 
     public AdapterForEventTreatment (Context context, List<ParseObject> list, String id){
         this.context = context;
@@ -74,6 +75,15 @@ public class AdapterForEventTreatment extends BaseAdapter  {
         Button acceptButton = v.findViewById(R.id.acceptButton_of_item);
         Button cancelButton = v.findViewById(R.id.cancelButton_of_item);
 
+        ParseQuery<ParseObject> userRatingQuery = new ParseQuery<>("Rating");
+        userRatingQuery.whereEqualTo("user", getItem(i));
+        try {
+            userPoints = userRatingQuery.getFirst();
+            userRating.setText("Рейтинг: " + userPoints.getInt("points"));
+        } catch (com.parse.ParseException e) {
+            throw new RuntimeException(e);
+        }
+
         ParseObject user = getItem(i).getParseObject("user");
         try {
             user.fetchIfNeeded();
@@ -91,7 +101,6 @@ public class AdapterForEventTreatment extends BaseAdapter  {
         Long time = new Date().getTime() / 1000 - birthday.getTime() / 1000;
         int years = Math.round(time) / 31536000;
         userAge.setText("Возраст: "+years);
-        userRating.setText("Рейтинг: " + user.getInt("points"));
         userPhone.setText(user.getString("phone"));
 
         progressDialog = new ProgressDialog(v.getContext());
@@ -131,20 +140,6 @@ public class AdapterForEventTreatment extends BaseAdapter  {
 
                     });
 
-
-//                    ParseRelation<ParseObject> relationVolunteers = event.getRelation("volunteers");
-//                    ParseRelation<ParseObject> relationApplication = event.getRelation("applications");
-//                    relationApplication.remove(getItem(i));
-//                    relationVolunteers.add(getItem(i));
-//                    event.saveInBackground(e1 -> {
-//                        if (e1 == null) {
-//                            Log.d(TAG, "sucess" ); //Заменить на всплывающее окно
-//                            remove(i);
-//                            notifyDataSetChanged();
-//                        } else {
-//                            Log.d(TAG, "not sucess"+ e1);
-//                        }
-//                    });
                 } else {
                     Toast.makeText(view1.getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
